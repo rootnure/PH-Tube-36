@@ -11,7 +11,10 @@ const displayAllCategories = categories => {
     const categoriesContainer = document.getElementById('categories-container');
     categories.forEach(category => {
         const categoryBtn = document.createElement('button');
-        categoryBtn.classList = `btn bg-gray-300 font-bold normal-case`;
+        categoryBtn.classList = `btn bg-gray-300 font-bold hover:text-black normal-case`;
+        if(categories.indexOf(category) === 0) {
+            categoryBtn.classList.add('bg-red-500', 'text-white');
+        }
         categoryBtn.setAttribute('onclick', `handleActive(this, ${category.category_id})`);
         categoryBtn.innerText = `${category.category}`;
         categoriesContainer.appendChild(categoryBtn);
@@ -60,14 +63,14 @@ const handleActive = (target, categoryId) => {
     neighbors.forEach(neighbor => {
         if(neighbor?.classList?.value) {
             if(neighbor.classList.value.includes('bg-red-500')) {
-                neighbor.classList.remove('bg-red-500');
+                neighbor.classList.remove('bg-red-500', 'text-white');
             }
         }
         else {
             return;
         }
     });
-    activeElement.classList.add('bg-red-500');
+    activeElement.classList.add('bg-red-500', 'text-white');
     categoryIdNow = categoryId;
     loadCategory();
 }
