@@ -63,8 +63,8 @@ const displayCategory = videos => {
         const videoDiv = document.createElement('div');
         videoDiv.innerHTML = `
         <div class="card hover:cursor-pointer duration-100 bg-base-100 rounded">
-            <figure class="h-52 md:h-40 relative">
-                <img src="${thumbnail}" alt="${title}" class="w-full">
+            <figure class="h-52 relative">
+                <img src="${thumbnail}" alt="${title}" class="w-full min-h-full">
                 ${published || published > 0 ? `<p class="absolute bottom-2 right-2 bg-black px-2 py-1 text-white rounded-md text-xs">${parseInt(published / 60)}hrs ${published % 60} min ago</p>` : ''}
             </figure>
             <div class="card-body px-1 py-4 grid grid-cols-12 gap-x-4">
