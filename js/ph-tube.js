@@ -7,7 +7,13 @@ const loadAllCategories = async () => {
 }
 
 const displayAllCategories = categories => {
-    console.log(categories);
+    const categoriesContainer = document.getElementById('categories-container');
+    categories.forEach(category => {
+        const categoryBtn = document.createElement('button');
+        categoryBtn.classList = `btn bg-gray-300 font-bold normal-case`;
+        categoryBtn.innerText = `${category.category}`;
+        categoriesContainer.appendChild(categoryBtn);
+    });
 }
 
 loadAllCategories();
