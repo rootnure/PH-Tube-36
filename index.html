@@ -14,21 +14,21 @@
 
 <body>
     <header class="container mx-auto">
-        <div class="flex justify-between items-center py-8 border-b-2 border-gray-200">
-            <div>
-                <img src="./images/logo.png" alt="">
-            </div>
-            <div>
+        <div class="flex justify-between items-center py-8 gap-x-2 sm:gap-x-0 border-b-2 border-gray-200">
+            <figure class="">
+                <img src="./images/logo.png" alt="" class="w-11/12 sm:w-full">
+            </figure>
+            <div class="md:w-[175px] flex justify-center">
                 <button class="btn bg-gray-300 font-bold normal-case">Sort by View</button>
             </div>
-            <div>
+            <div class="md:w-[175px] flex justify-end">
                 <button class="btn text-white bg-red-500 normal-case">Blog</button>
             </div>
         </div>
     </header>
     <main class="container mx-auto">
         <section>
-            <div id="categories-container" class="my-8 flex justify-around w-full md:w-9/12 lg:w-6/12 mx-auto gap-x-4">
+            <div id="categories-container" class="my-3 md:my-8 flex flex-wrap justify-center w-full md:w-9/12 lg:w-6/12 mx-auto gap-2 md:gap-8">
                 <!-- All Categories here -->
 
             </div>
