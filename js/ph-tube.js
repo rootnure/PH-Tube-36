@@ -13,7 +13,7 @@ const displayAllCategories = categories => {
     categories.forEach(category => {
         const categoryBtn = document.createElement('button');
         categoryBtn.classList = `btn font-bold hover:text-black normal-case bg-gray-300`;
-        if(categories.indexOf(category) === 0) {
+        if (categories.indexOf(category) === 0) {
             categoryBtn.classList.add('bg-red-500', 'text-white');
             categoryBtn.classList.remove('bg-gray-300');
         }
@@ -38,16 +38,21 @@ const displayCategory = videos => {
     // clearing the previous results from website
     videosContainer.textContent = '';
     // checking for sorting
-    if(isSortByView) {
+    if (isSortByView) {
         videos.sort((v1, v2) => (parseFloat(v1.others.views) < parseFloat(v2.others.views)) ? 1 : ((parseFloat(v2.others.views) < parseFloat(v1.others.views)) ? -1 : 0));
     }
     videos.forEach(video => {
         const { thumbnail, title, authors, others } = video;
         const [author] = authors;
+        const published = parseInt(+others.posted_date / 60);
+        // const h = published % 3600;
         const videoDiv = document.createElement('div');
         videoDiv.innerHTML = `
-        <div class="card hover:cursor-pointer hover:scale-105 duration-100 bg-base-100 rounded">
-            <figure class="h-52 md:h-40"><img src="${thumbnail}" alt="${title}" class="w-full"></figure>
+        <div class="card hover:cursor-pointer duration-100 bg-base-100 rounded">
+            <figure class="h-52 md:h-40 relative">
+                <img src="${thumbnail}" alt="${title}" class="w-full">
+                ${published || published > 0 ? `<p class="absolute bottom-2 right-2 bg-black px-2 py-1 text-white rounded-md text-xs">${parseInt(published / 60)}hrs ${published % 60} min ago</p>` : ''}
+            </figure>
             <div class="card-body px-1 py-4 grid grid-cols-12 gap-x-4">
                 <div class="col-span-2">
                     <img src="${author.profile_picture}" alt="${author.profile_name}" class="w-12 h-12 rounded-[100%]">
@@ -68,8 +73,8 @@ const handleActive = (target, categoryId) => {
     const activeElement = target;
     const neighbors = target.parentNode.childNodes;
     neighbors.forEach(neighbor => {
-        if(neighbor?.classList?.value) {
-            if(neighbor.classList.value.includes('bg-red-500')) {
+        if (neighbor?.classList?.value) {
+            if (neighbor.classList.value.includes('bg-red-500')) {
                 neighbor.classList.remove('bg-red-500', 'text-white');
                 neighbor.classList.add('bg-gray-300');
             }
