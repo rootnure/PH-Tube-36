@@ -37,6 +37,20 @@ const displayCategory = videos => {
     const videosContainer = document.getElementById('videos-container');
     // clearing the previous results from website
     videosContainer.textContent = '';
+    // no data check & handle
+    if(videos.length < 1) {
+        videosContainer.innerHTML = `
+            <div class="md:col-span-2 lg:col-span-4 h-96 flex justify-center">
+                <div class="flex flex-col gap-4 justify-center">
+                    <div class="flex justify-center">
+                        <image src="./images/icon.png" alt="No Video Found">
+                    </div>
+                    <h1 class="text-4xl font-bold text-center">Oops!!! No video found...</h1>
+                </div>
+            </div>
+        `;
+        return;
+    }
     // checking for sorting
     if (isSortByView) {
         videos.sort((v1, v2) => (parseFloat(v1.others.views) < parseFloat(v2.others.views)) ? 1 : ((parseFloat(v2.others.views) < parseFloat(v1.others.views)) ? -1 : 0));
