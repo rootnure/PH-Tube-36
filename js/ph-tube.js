@@ -1,4 +1,4 @@
-let categoryIdNow = '1000';
+let categoryIdNow = '1003';
 let isSortByView = false;
 const loadAllCategories = async () => {
     const apiUrl = `https://openapi.programming-hero.com/api/videos/categories`;
@@ -17,23 +17,24 @@ const displayAllCategories = categories => {
             categoryBtn.classList.add('bg-red-500', 'text-white');
             categoryBtn.classList.remove('bg-gray-300');
         }
-        categoryBtn.setAttribute('onclick', `handleActive(this, ${category.category_id})`);
+        categoryBtn.setAttribute('onclick', `handleActiveTab(this, ${category.category_id})`);
         categoryBtn.innerText = `${category.category}`;
         categoriesContainer.appendChild(categoryBtn);
     });
-    loadCategory(categoryIdNow);
+    loadCategoryResult(categoryIdNow);
 }
 
-const loadCategory = async () => {
+const loadCategoryResult = async () => {
+    toggleLoadingSpinner(true);
     const categoryId = categoryIdNow;
     const apiUrl = `https://openapi.programming-hero.com/api/videos/category/${categoryId}`;
     const res = await fetch(apiUrl);
     const data = await res.json();
     const videos = data.data;
-    displayCategory(videos);
+    displayCategoryResult(videos);
 }
 
-const displayCategory = videos => {
+const displayCategoryResult = videos => {
     const videosContainer = document.getElementById('videos-container');
     // clearing the previous results from website
     videosContainer.textContent = '';
@@ -49,6 +50,7 @@ const displayCategory = videos => {
                 </div>
             </div>
         `;
+        toggleLoadingSpinner(false);
         return;
     }
     // checking for sorting
@@ -59,12 +61,11 @@ const displayCategory = videos => {
         const { thumbnail, title, authors, others } = video;
         const [author] = authors;
         const published = parseInt(+others.posted_date / 60);
-        // const h = published % 3600;
         const videoDiv = document.createElement('div');
         videoDiv.innerHTML = `
-        <div class="card hover:cursor-pointer duration-100 bg-base-100 rounded">
+        <div class="card group hover:cursor-pointer bg-base-100 rounded">
             <figure class="h-52 relative">
-                <img src="${thumbnail}" alt="${title}" class="w-full min-h-full">
+                <img src="${thumbnail}" alt="${title}" class="w-full min-h-full group-hover:scale-105 duration-100 ">
                 ${published || published > 0 ? `<p class="absolute bottom-2 right-2 bg-black px-2 py-1 text-white rounded-md text-xs">${parseInt(published / 60)}hrs ${published % 60} min ago</p>` : ''}
             </figure>
             <div class="card-body px-1 py-4 grid grid-cols-12 gap-x-4">
@@ -81,9 +82,10 @@ const displayCategory = videos => {
         `;
         videosContainer.appendChild(videoDiv);
     });
+    toggleLoadingSpinner(false);
 }
 
-const handleActive = (target, categoryId) => {
+const handleActiveTab = (target, categoryId) => {
     const activeElement = target;
     const neighbors = target.parentNode.childNodes;
     neighbors.forEach(neighbor => {
@@ -101,12 +103,22 @@ const handleActive = (target, categoryId) => {
     activeElement.classList.remove('bg-gray-300');
     categoryIdNow = categoryId;
     isSortByView = false;
-    loadCategory();
+    loadCategoryResult();
 }
 
 const handleSortByView = () => {
     isSortByView = true;
-    loadCategory();
+    loadCategoryResult();
+}
+
+const toggleLoadingSpinner = isVisible => {
+    const spinner = document.getElementById('loading-spinner');
+    if(isVisible) {
+        spinner.classList.remove('hidden');
+    }
+    else {
+        spinner.classList.add('hidden');
+    }
 }
 
 loadAllCategories();
