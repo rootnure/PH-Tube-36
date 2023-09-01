@@ -64,17 +64,17 @@ const displayCategoryResult = videos => {
         const videoDiv = document.createElement('div');
         videoDiv.innerHTML = `
         <div class="card group hover:cursor-pointer bg-base-100 rounded">
-            <figure class="h-52 relative">
+            <figure class="h-52 lg:h-40 2xl:h-52 relative">
                 <img src="${thumbnail}" alt="${title}" class="w-full min-h-full group-hover:scale-105 duration-100 ">
                 ${published || published > 0 ? `<p class="absolute bottom-2 right-2 bg-black px-2 py-1 text-white rounded-md text-xs">${parseInt(published / 60)}hrs ${published % 60} min ago</p>` : ''}
             </figure>
             <div class="card-body px-1 py-4 grid grid-cols-12 gap-x-4">
                 <div class="col-span-2">
-                    <img src="${author.profile_picture}" alt="${author.profile_name}" class="w-12 h-12 rounded-[100%]">
+                    <img src="${author.profile_picture}" alt="${author.profile_name}" class="w-12 h-12 lg:h-7 xl:h-10 2xl:h-12 rounded-[100%]">
                 </div>
                 <div class="col-span-10 flex flex-col gap-y-1">
                     <h3 class="text-base font-bold">${title}</h3>
-                    <p class="text-sm text-gray-400">${author.profile_name}${author.verified ? ` <i class="fa-solid fa-square-check text-blue-500"></i>` : ''}</p>
+                    <p class="text-sm text-gray-400 flex">${author.profile_name}${author.verified ? ` <img src="./images/verified.png" alt="Verified" class="ps-1 scale-75">` : ''}</p>
                     <p class="text-sm text-gray-400">${others.views} views</p>
                 </div>
             </div>
