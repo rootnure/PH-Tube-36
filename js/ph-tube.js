@@ -1,4 +1,4 @@
-let categoryIdNow = '1003';
+let categoryIdNow = '1000';
 let isSortByView = false;
 const loadAllCategories = async () => {
     const apiUrl = `https://openapi.programming-hero.com/api/videos/categories`;
