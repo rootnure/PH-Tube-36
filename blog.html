@@ -16,15 +16,16 @@
 <body>
     <header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 justify-between items-center py-8 gap-x-2 sm:gap-x-0 border-b-2 border-gray-200">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-3 justify-between items-center py-8 gap-x-2 sm:gap-x-0 border-b-2 border-gray-200">
             <figure class="mx-auto">
                 <img src="./images/logo.png" alt="" class="w-11/12 sm:w-full">
             </figure>
-            <h1 class="text-2xl md:text-3xl text-center font-bold my-4">
+            <div class="text-2xl md:text-3xl text-center font-bold my-4">
                 Welcome to
                 <span class="text-red-500"><i class="fa-solid fa-circle-play"></i> PH</span>
                 Blog
-            </h1>
+            </div>
             <div class="flex mx-auto">
                 <a href="./index.html" class="btn text-white hover:text-black bg-red-500 normal-case">Home</a>
             </div>
@@ -32,16 +33,90 @@
     </header>
     <main>
         <section class="container mx-auto my-6">
-            <h3 class="text-xl font-bold">Blog Questions</h3>
-
-            <p class="text-lg font-semibold">- Discuss the scope of <span
-                    class="inline-block italic bg-gray-200 rounded-md px-2">var</span>, <span
-                    class="inline-block italic bg-gray-200 rounded-md px-2">let</span>, and <span
-                    class="inline-block italic bg-gray-200 rounded-md px-2">const</span></p>
-            <p class="text-lg font-semibold">- Tell us the use cases of <span
-                    class="inline-block italic bg-gray-200 rounded-md px-2">null</span> and <span
-                    class="inline-block italic bg-gray-200 rounded-md px-2">undefined</span></p>
-            <p class="text-lg font-semibold">- What do you mean by <span class="font-bold">REST API</span>?</p>
+            <h3 class="text-xl font-bold text-center my-4">FAQ</h3>
+            <!-- accordion -->
+            <div class="collapse collapse-arrow bg-gray-100">
+                <input type="radio" name="my-accordion-2" checked="checked" />
+                <div class="collapse-title text-xl font-medium">
+                    <!-- question 1 -->
+                    <p class="text-lg font-semibold">Q: Discuss the scope of <span
+                            class="inline-block italic bg-gray-300 rounded-md px-2">var</span>, <span
+                            class="inline-block italic bg-gray-300 rounded-md px-2">let</span>, and <span
+                            class="inline-block italic bg-gray-300 rounded-md px-2">const</span></p>
+                </div>
+                <div class="collapse-content">
+                    <!-- answer 1 -->
+                    <p class="text-justify">
+                        <span class="inline-block font-bold italic bg-gray-300 rounded-md px-2">var</span>⟹ Variable declared using <span class="inline-block italic bg-gray-300 rounded-md px-2">var</span> will be a <strong>global</strong> scope or <strong>function</strong> scope variable. Means, variables declared using <span class="inline-block italic bg-gray-300 rounded-md px-2">var</span> will be <strong>hoisted</strong> to the <strong>global root</strong> or the <strong>function root</strong> depending on the declaration position. <span class="inline-block italic bg-gray-300 rounded-md px-2">var</span> allow to redeclare same variable multiple times which may cause problem.
+                        <br>
+                        <em><strong>Note:</strong> Only the declaration part will be hoisted not the value.</em>
+                        <br>
+                        <span class="text-xs underline font-bold italic">For Example:</span>
+                        If we write <span class="inline-block italic bg-gray-300 rounded-md px-2">var name = "rootnure";</span> anywhere except function scope the variable <span class="inline-block italic bg-gray-300 rounded-md px-2">name</span> can be found anywhere form that script. No matter if it is declare inside a <strong>loop scope</strong>, <strong>condition scope</strong> or <strong>global scope</strong>.
+                        And if it declared inside a function it can only be found inside that function.
+                    </p>
+                    <p class="text-justify my-6">
+                        <span class="inline-block font-bold italic bg-gray-300 rounded-md px-2">let</span>⟹ Variable declared using <span class="inline-block italic bg-gray-300 rounded-md px-2">let</span> will be a <strong>block</strong> scope variable. Means, the variable only can be accessed inside that block only. Block can be <strong>function block</strong>, <strong>condition block</strong>, <strong>loop block</strong>.
+                        <br>
+                        <span class="text-xs underline font-bold italic">For Example:</span>
+                        If we write <span class="inline-block italic bg-gray-300 rounded-md px-2">let age = 25;</span> inside a block scope the variable <span class="inline-block italic bg-gray-300 rounded-md px-2">age</span> can only be found inside that specific block where it was declared.
+                    </p>
+                    <p class="text-justify">
+                        <span class="inline-block font-bold italic bg-gray-300 rounded-md px-2">const</span>⟹ Scope for variables declared using <span class="inline-block italic bg-gray-300 rounded-md px-2">const</span> is same as <span class="inline-block italic bg-gray-300 rounded-md px-2">let</span>. It will also be a <strong>block scope</strong> variable. Here the block also can be <strong>function block</strong>, <strong>condition block</strong>, <strong>loop block</strong>.
+                        <br>
+                        <span class="text-xs underline font-bold italic">For Example:</span>
+                        If we write <span class="inline-block italic bg-gray-300 rounded-md px-2">const weight = "82 KG";</span> inside a block scope the variable <span class="inline-block italic bg-gray-300 rounded-md px-2">weight</span> can only be found inside that specific block where it was declared.
+                    </p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow bg-gray-100 my-4">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-xl font-medium">
+                    <!-- question 2 -->
+                    <p class="text-lg font-semibold">Q: Tell us the use cases of <span
+                            class="inline-block italic bg-gray-300 rounded-md px-2">null</span> and <span
+                            class="inline-block italic bg-gray-300 rounded-md px-2">undefined</span></p>
+                </div>
+                <div class="collapse-content">
+                    <!-- answer 2 -->
+                    <p class="text-justify">
+                        <span class="inline-block font-bold italic bg-gray-300 rounded-md px-2">null</span>⟹ It means the value is not present right now and may got updated when available. It may also indicate that the data is not provided yet.
+                        <br>
+                        <span class="text-xs underline font-bold italic">For Example:</span>
+                        If we write <span class="inline-block italic bg-gray-300 rounded-md px-2">let age = null;</span> it means no age data is available for now. But may got updated when we get the <strong>DOB (Date of Birth)</strong> data.
+                    </p>
+                    <p class="text-justify mt-6">
+                        <span class="inline-block font-bold italic bg-gray-300 rounded-md px-2">undefined</span>⟹ It means the value is not assigned yet. Only the declaration part may or may not assigned. It <strong>indicates variable is not declared or if declared no value is assigned. </strong>
+                        <br>
+                        <span class="text-xs underline font-bold italic">For Example:</span>
+                        If we write <span class="inline-block italic bg-gray-300 rounded-md px-2">let name;</span> it means no value is assigned but may use it in the future.
+                    </p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow bg-gray-100">
+                <input type="radio" name="my-accordion-2" />
+                <div class="collapse-title text-xl font-medium">
+                    <!-- question 3 -->
+                    <p class="text-lg font-semibold">Q: What do you mean by <span class="font-bold">REST API</span>?</p>
+                </div>
+                <div class="collapse-content">
+                    <!-- answer 3 -->
+                    <strong>API</strong> means <em>Application Programming Interface</em>.
+                    <br>
+                    <strong>REST</strong> means <em>Representational State Transfer</em> architectural style.
+                    <br>
+                    A REST API is a specific type of API that follows the following guidelines:
+                    <ul class="list-disc list-inside">
+                        <li>Use JSON as the Format for Sending and Receiving Data.</li>
+                        <li>Use Filtering, Sorting, and Pagination to Retrieve the Data Requested.
+                        </li>
+                        <li>Use Nouns Instead of Verbs in Endpoints.</li>
+                        <li>Use Status Codes in Error Handling.</li>
+                        <li>Use Nesting on Endpoints to Show Relationships. etc.</li>
+                    </ul>
+                    When a client requests a resource using a <strong>REST API</strong>, the server transfers back the current state of the resource in a standardized representation.
+                </div>
+            </div>
         </section>
     </main>
 
